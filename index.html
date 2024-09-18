@@ -9,22 +9,7 @@
 </head>
 
 <body>
-    <!-- <div class="book_form">
-        <form action="#" method="POST">
-            <p>
-                <label>Name of the book</label>
-            </p>
-            <p>
-                <label>Author of the book</label>
-            </p>
-            <p>
-                <label>Pages of the book</label>
-            </p>
-            <p>
-                <label>Status of the book</label>
-            </p>
-        </form>
-    </div> -->
+
     <table id="bookTable">
         <thead>
             <tr>
@@ -37,6 +22,31 @@
         <tbody>
         </tbody>
     </table>
+
+    <button type="button" id="open-button" onclick="openForm()">Open Form</button>
+    <div class="form-popup" id="bookForm">
+        <form action="#" id="myForm" name="myForm">
+            <p>
+                <label for="name">Name: </label>
+                <input id="name" name="name" type="text" required>
+            </p>
+            <p>
+                <label for="author">Author: </label>
+                <input id="author" name="author" type="text" required>
+            </p>
+            <p>
+                <label for="pages">Pages: </label>
+                <input id="pages" name="pages" type="number" required>
+            </p>
+            <p>
+                <label for="status">Status: </label>
+                <input id="status" name="status" type="text" required>
+            </p>
+            <button type="submit" id="btn-submit">Add book</button>
+            <button type="button" class="btn-cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
     <script src="scripts/main.js"></script>
 </body>
 

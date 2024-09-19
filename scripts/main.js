@@ -37,6 +37,7 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 
     const newDiv = document.createElement("div");
+    newDiv.id = myLibrary.length;
     const newList = document.createElement("ul");
     newDiv.appendChild(newList);
 
@@ -59,6 +60,16 @@ function addBookToLibrary(book) {
         newList.appendChild(newLi);
     }
 
+    const statusButton = document.createElement("button");
+    statusButton.id = `${myLibrary.length}-status-btn`;
+    newList.appendChild(statusButton);
+    statusButton.innerHTML = `<button type=button onclick="changeStatus(this.parentElement)">Change Status</button>`
+
+    const delButton = document.createElement("button");
+    delButton.id = `${myLibrary.length}-btn`;
+    newDiv.appendChild(delButton);
+    delButton.innerHTML = `<button type=button onclick="deleteDiv(this.parentElement)">Delete</button>`
+
     document.getElementById("grid-container").appendChild(newDiv);
 
     // const liName = document.createElement("li");
@@ -66,6 +77,16 @@ function addBookToLibrary(book) {
     // newList.appendChild(liName);
     // newDiv.appendChild(document.createTextNode(book.name));
     // document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(book => `<tr><td>${book.name}</td><td>${book.author}</td><td>${book.pages}</td><td>${book.status}</td></tr>`).join('');
+}
+
+function deleteDiv(element) {
+    const bookId = document.getElementById(element);
+    myLibrary.pop(myLibrary[bookId]);
+    element.parentNode.remove();
+}
+
+function changeStatus(element) {
+
 }
 
 // document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(name => `<tr><td>${book2.name}</td><td>${book2.author}</td><td>${book2.pages}</td><td>${book2.status}</td></tr>`).join('');

@@ -10,7 +10,7 @@
 
 <body>
 
-    <table id="bookTable">
+    <!-- <table id="bookTable">
         <thead>
             <tr>
                 <th>Name</th>
@@ -21,7 +21,10 @@
         </thead>
         <tbody>
         </tbody>
-    </table>
+    </table> -->
+    <div id="grid-container">
+
+    </div>
 
     <button type="button" id="open-button" onclick="openForm()">Open Form</button>
     <div class="form-popup" id="bookForm">
@@ -40,7 +43,14 @@
             </p>
             <p>
                 <label for="status">Status: </label>
-                <input id="status" name="status" type="text" required>
+                <select id="status" required>
+                    <option value="">--Please choose status--</option>
+                    <option value="read">read</option>
+                    <option value="reading">reading</option>
+                    <option value="on-hold">on-hold</option>
+                    <option value="dropped">dropped</option>
+                    <option value="plan to read">plan to read</option>
+                </select>
             </p>
             <button type="submit" id="btn-submit">Add book</button>
             <button type="button" class="btn-cancel" onclick="closeForm()">Close</button>

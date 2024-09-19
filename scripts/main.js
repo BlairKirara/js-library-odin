@@ -35,7 +35,37 @@ myForm.onsubmit = function () {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-    document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(book => `<tr><td>${book.name}</td><td>${book.author}</td><td>${book.pages}</td><td>${book.status}</td></tr>`).join('');
+
+    const newDiv = document.createElement("div");
+    const newList = document.createElement("ul");
+    newDiv.appendChild(newList);
+
+    for (let i = 0; i < 4; i++) {
+        const newLi = document.createElement("li");
+        switch (i) {
+            case 0:
+                newLi.innerHTML = `Title: ${book.name}`;
+                break;
+            case 1:
+                newLi.innerHTML = `Author: ${book.author}`;
+                break;
+            case 2:
+                newLi.innerHTML = `Pages: ${book.pages}`;
+                break;
+            case 3:
+                newLi.innerHTML = `Status: ${book.status}`;
+                break;
+        }
+        newList.appendChild(newLi);
+    }
+
+    document.getElementById("grid-container").appendChild(newDiv);
+
+    // const liName = document.createElement("li");
+    // liName.innerHTML = `Title: ${book.name}`;
+    // newList.appendChild(liName);
+    // newDiv.appendChild(document.createTextNode(book.name));
+    // document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(book => `<tr><td>${book.name}</td><td>${book.author}</td><td>${book.pages}</td><td>${book.status}</td></tr>`).join('');
 }
 
 // document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(name => `<tr><td>${book2.name}</td><td>${book2.author}</td><td>${book2.pages}</td><td>${book2.status}</td></tr>`).join('');

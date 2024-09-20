@@ -38,7 +38,7 @@ function addBookToLibrary(book) {
     myLibrary.push(book);
 
     const newDiv = document.createElement("div");
-    newDiv.id = myLibrary.length;
+    newDiv.id = myLibrary.length - 1;
     const newList = document.createElement("ul");
     newDiv.appendChild(newList);
 
@@ -47,19 +47,19 @@ function addBookToLibrary(book) {
         switch (i) {
             case 0:
                 newLi.innerHTML = `Title: ${book.name}`;
-                newLi.id = `${myLibrary.length}-title`;
+                newLi.id = `${myLibrary.length - 1}-title`;
                 break;
             case 1:
                 newLi.innerHTML = `Author: ${book.author}`;
-                newLi.id = `${myLibrary.length}-author`;
+                newLi.id = `${myLibrary.length - 1}-author`;
                 break;
             case 2:
                 newLi.innerHTML = `Pages: ${book.pages}`;
-                newLi.id = `${myLibrary.length}-pages`;
+                newLi.id = `${myLibrary.length - 1}-pages`;
                 break;
             case 3:
                 newLi.innerHTML = `Status: ${book.status} <button type="button" id="status-btn" onclick="changeStatus(this.parentElement.id)">Change status</button>`;
-                newLi.id = `${myLibrary.length}-status`;
+                newLi.id = `${myLibrary.length - 1}-status`;
                 break;
         }
         newList.appendChild(newLi);
@@ -68,9 +68,15 @@ function addBookToLibrary(book) {
     const delButton = document.createElement("button");
     delButton.id = `${myLibrary.length}-btn`;
     newDiv.appendChild(delButton);
-    delButton.innerHTML = `<button type=button onclick="deleteDiv(this.parentElement)">Delete</button>`
+    delButton.textContent = "Delete";
+    delButton.onclick = function () {
+        deleteDiv(this);
+    }
+    // delButton.innerHTML = `<button type=button onclick="deleteDiv(this.parentElement)">Delete</button>`
 
     document.getElementById("grid-container").appendChild(newDiv);
+
+
 }
 
 function deleteDiv(element) {
@@ -81,19 +87,15 @@ function deleteDiv(element) {
 
 function changeStatus(element) {
     console.log(element);
-    document.getElementById(element).innerHTML = `
-    <form>
-    <select id="status-select" required>
-        <option value="">--Please choose status--</option>
+    document.getElementById(element).innerHTML = `Status: 
+    <select id="status-select" required>  
         <option value="read">read</option>
         <option value="reading">reading</option>
         <option value="on-hold">on-hold</option>
        <option value="dropped">dropped</option>
        <option value="plan to read">plan to read</option>
     </select>
-    <button type="button" id="btn-status-submit" onclick="changeStatusValue(this.parentElement.id, this.parentElement.parentElement.parentElement.id)">Ok</button>
-    </form>`
-
+    <button type="button" id="btn-status-submit" onclick="changeStatusValue(this.parentElement.id, this.parentElement.parentElement.parentElement.id)">Ok</button>`
 }
 
 function changeStatusValue(fieldId, bookId) {
@@ -107,3 +109,28 @@ function changeStatusValue(fieldId, bookId) {
     document.getElementById(fieldId).innerHTML = `Status: ${myLibrary[bookId].status} <button type="button" id="status-btn" onclick="changeStatus(this.parentElement.id)">Change status</button>`
 
 }
+
+// function changeStatus(element) {
+//     // const bookId = element.parentNode.id;
+//     // document.getElementById(`${bookId}-status`).innerHTML =
+//     //     `<form action="#" id="myStatusForm" name="myStatusForm">
+//     //     <label for="status">Status: </label>
+//     //     <select id="status" required>
+//     //         <option value="">--Please choose status--</option>
+//     //         <option value="read">read</option>
+//     //         <option value="reading">reading</option>
+//     //         <option value="on-hold">on-hold</option>
+//     //         <option value="dropped">dropped</option>
+//     //         <option value="plan to read">plan to read</option>
+//     //     </select>
+//     //     <button type="submit" id="btn-status-submit">Ok</button>
+//     //     </form>`
+//     // document.body.append()
+// }
+
+// myStatusForm.onsubmit = function () {
+//     document.getElementById(myStatusForm.parentNode.id).value = myStatusForm.status.value;
+//     return false;
+// }
+
+// document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(name => `<tr><td>${book2.name}</td><td>${book2.author}</td><td>${book2.pages}</td><td>${book2.status}</td></tr>`).join('');

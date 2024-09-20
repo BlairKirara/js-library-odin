@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: blanchedalmond;
 }
 
 .form-popup {
@@ -13,4 +14,32 @@ body {
 
 #grid-container {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#grid-container>div {
+    border: 1px solid blue;
+    background-color: aliceblue;
+    padding: 20px;
+    margin: 10px;
+}
+
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
 }

@@ -7,6 +7,10 @@ body {
     display: none;
 }
 
+#statusForm {
+    display: none;
+}
+
 #grid-container {
     display: grid;
 }

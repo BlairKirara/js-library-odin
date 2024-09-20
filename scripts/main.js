@@ -8,6 +8,7 @@ function Book(name, author, pages, status) {
 }
 
 var myForm = document.forms.myForm;
+var statusForm = document.forms.statusForm;
 
 function openForm() {
     document.getElementById("bookForm").style.display = "block";
@@ -46,24 +47,23 @@ function addBookToLibrary(book) {
         switch (i) {
             case 0:
                 newLi.innerHTML = `Title: ${book.name}`;
+                newLi.id = `${myLibrary.length}-title`;
                 break;
             case 1:
                 newLi.innerHTML = `Author: ${book.author}`;
+                newLi.id = `${myLibrary.length}-author`;
                 break;
             case 2:
                 newLi.innerHTML = `Pages: ${book.pages}`;
+                newLi.id = `${myLibrary.length}-pages`;
                 break;
             case 3:
-                newLi.innerHTML = `Status: ${book.status}`;
+                newLi.innerHTML = `Status: ${book.status} <button type="button" id="status-btn" onclick="changeStatus(this.parentElement.id)">Change status</button>`;
+                newLi.id = `${myLibrary.length}-status`;
                 break;
         }
         newList.appendChild(newLi);
     }
-
-    const statusButton = document.createElement("button");
-    statusButton.id = `${myLibrary.length}-status-btn`;
-    newList.appendChild(statusButton);
-    statusButton.innerHTML = `<button type=button onclick="changeStatus(this.parentElement)">Change Status</button>`
 
     const delButton = document.createElement("button");
     delButton.id = `${myLibrary.length}-btn`;
@@ -71,12 +71,6 @@ function addBookToLibrary(book) {
     delButton.innerHTML = `<button type=button onclick="deleteDiv(this.parentElement)">Delete</button>`
 
     document.getElementById("grid-container").appendChild(newDiv);
-
-    // const liName = document.createElement("li");
-    // liName.innerHTML = `Title: ${book.name}`;
-    // newList.appendChild(liName);
-    // newDiv.appendChild(document.createTextNode(book.name));
-    // document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(book => `<tr><td>${book.name}</td><td>${book.author}</td><td>${book.pages}</td><td>${book.status}</td></tr>`).join('');
 }
 
 function deleteDiv(element) {
@@ -86,7 +80,30 @@ function deleteDiv(element) {
 }
 
 function changeStatus(element) {
+    console.log(element);
+    document.getElementById(element).innerHTML = `
+    <form>
+    <select id="status-select" required>
+        <option value="">--Please choose status--</option>
+        <option value="read">read</option>
+        <option value="reading">reading</option>
+        <option value="on-hold">on-hold</option>
+       <option value="dropped">dropped</option>
+       <option value="plan to read">plan to read</option>
+    </select>
+    <button type="button" id="btn-status-submit" onclick="changeStatusValue(this.parentElement.id, this.parentElement.parentElement.parentElement.id)">Ok</button>
+    </form>`
 
 }
 
-// document.querySelector("#bookTable tbody").innerHTML = myLibrary.map(name => `<tr><td>${book2.name}</td><td>${book2.author}</td><td>${book2.pages}</td><td>${book2.status}</td></tr>`).join('');
+function changeStatusValue(fieldId, bookId) {
+    const statusSelect = document.getElementById('status-select');
+
+    const selectedStatus = statusSelect.value;
+    console.log(selectedStatus);
+
+    myLibrary[bookId].status = selectedStatus;
+
+    document.getElementById(fieldId).innerHTML = `Status: ${myLibrary[bookId].status} <button type="button" id="status-btn" onclick="changeStatus(this.parentElement.id)">Change status</button>`
+
+}

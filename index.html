@@ -9,40 +9,46 @@
 </head>
 
 <body>
-    <div id="grid-container">
-
-    </div>
-    <div class="addBookContainer">
-        <button type="button" id="open-button" onclick="openForm()">Open Form</button>
-        <div class="form-popup" id="bookForm">
-            <form action="#" id="myForm" name="myForm">
-                <p>
-                    <label for="name">Name: </label>
-                    <input id="name" name="name" type="text" required>
-                </p>
-                <p>
-                    <label for="author">Author: </label>
-                    <input id="author" name="author" type="text" required>
-                </p>
-                <p>
-                    <label for="pages">Pages: </label>
-                    <input id="pages" name="pages" type="number" required>
-                </p>
-                <p>
-                    <label for="status">Status: </label>
-                    <select id="status" required>
-                        <option value="">--Please choose status--</option>
-                        <option value="read">read</option>
-                        <option value="reading">reading</option>
-                        <option value="on-hold">on-hold</option>
-                        <option value="dropped">dropped</option>
-                        <option value="plan to read">plan to read</option>
-                    </select>
-                </p>
-                <button type="submit" id="btn-submit">Add book</button>
-                <button type="button" class="btn-cancel" onclick="closeForm()">Close</button>
-            </form>
+    <div id="flex-container">
+        <div id="title">
+            <h1>Library</h1>
         </div>
+        <div id="grid-container">
+
+        </div>
+        <div class="addBookContainer">
+            <button type="button" id="open-button" onclick="openForm()">Open Form</button>
+            <div class="form-popup" id="bookForm">
+                <form action="#" id="myForm" name="myForm">
+                    <p>
+                        <label for="name">Name: *</label>
+                        <input id="name" name="name" type="text" required>
+                    </p>
+                    <p>
+                        <label for="author">Author: *</label>
+                        <input id="author" name="author" type="text" required>
+                    </p>
+                    <p>
+                        <label for="pages">Pages: *</label>
+                        <input id="pages" name="pages" type="number" required>
+                    </p>
+                    <p>
+                        <label for="status">Status: *</label>
+                        <select id="status" required>
+                            <option value="">--Please choose status--</option>
+                            <option value="read">read</option>
+                            <option value="reading">reading</option>
+                            <option value="on-hold">on-hold</option>
+                            <option value="dropped">dropped</option>
+                            <option value="plan to read">plan to read</option>
+                        </select>
+                    </p>
+                    <button type="submit" id="btn-submit">Add book</button>
+                    <button type="button" class="btn-cancel" onclick="closeForm()">Close</button>
+                </form>
+            </div>
+        </div>
+
     </div>
     <script src="scripts/main.js"></script>
 </body>

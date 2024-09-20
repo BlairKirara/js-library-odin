@@ -30,16 +30,31 @@ ul {
 }
 
 button {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
+    padding: 10px 15px;
+    font-size: 15px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
     outline: none;
-    color: #fff;
-    background-color: #04AA6D;
+    color: white;
+    font-weight: 800;
+    background-color: #0a7954;
     border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
+    border-radius: 10px;
+    box-shadow: 0 5px gray;
+}
+
+button:hover {
+    background-color: #04442f;
+}
+
+button:active {
+    background-color: #04442f;
+    box-shadow: 0 5px rgb(78, 78, 78);
+    transform: translateY(4px);
+}
+
+.addBookContainer {
+    display: flex;
+    justify-content: center;
 }

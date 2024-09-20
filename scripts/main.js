@@ -9,6 +9,7 @@ function Book(name, author, pages, status) {
 
 var myForm = document.forms.myForm;
 var statusForm = document.forms.statusForm;
+var myLibraryLength = myLibrary.length;
 
 function openForm() {
     document.getElementById("bookForm").style.display = "block";
@@ -36,7 +37,7 @@ myForm.onsubmit = function () {
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
-
+    myLibraryLength++;
     const newDiv = document.createElement("div");
     newDiv.id = myLibrary.length - 1;
     const newList = document.createElement("ul");
@@ -81,7 +82,7 @@ function addBookToLibrary(book) {
 
 function deleteDiv(element) {
     const bookId = document.getElementById(element);
-    myLibrary.pop(myLibrary[bookId]);
+    myLibrary.splice(myLibrary[bookId], 1);
     element.parentNode.remove();
 }
 
